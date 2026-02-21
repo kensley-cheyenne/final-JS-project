@@ -41,8 +41,6 @@ setTimeout(() => {
 });
 
 const searchInput = document.querySelector("#searchInput"); 
-// const searchTerm = searchTerm.value.toLowerCase();
-//  if (searchTerm) renderMoviesAgain(searchTerm);
 
 function renderMoviesAgain(searchTerm) { 
   const movieElements = document.querySelectorAll(".movie"); 
@@ -61,7 +59,6 @@ searchInput.addEventListener('keyup', function searchKeyword(event) {
   renderMoviesAgain(event.target.value.toLowerCase());
 });
 
-// renderMoviesAgain();
 
 
 // FAKE DATA
