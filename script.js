@@ -40,13 +40,12 @@ setTimeout(() => {
   renderMovies();
 });
 
-
-const searchInput = document.querySelector("#searchInput");
-const movieElements = document.querySelectorAll(".movies"); 
+const searchInput = document.querySelector("#searchInput"); 
+// const searchTerm = searchTerm.value.toLowerCase();
+//  if (searchTerm) renderMoviesAgain(searchTerm);
 
 function renderMoviesAgain(searchTerm) { 
-  searchTerm = searchInput.value.toLowerCase();
-  searchInput.addEventListener('keyup', searchKeyword);
+  const movieElements = document.querySelectorAll(".movie"); 
 
   for (let i = 0; i < movieElements.length; i++) {
     let movieElement = movieElements[i];
@@ -58,10 +57,11 @@ function renderMoviesAgain(searchTerm) {
   }
 }
 
-function searchKeyword(event) {
-  renderMoviesAgain(event.target.value);
-}
-renderMoviesAgain();
+searchInput.addEventListener('keyup', function searchKeyword(event) {
+  renderMoviesAgain(event.target.value.toLowerCase());
+});
+
+// renderMoviesAgain();
 
 
 // FAKE DATA
