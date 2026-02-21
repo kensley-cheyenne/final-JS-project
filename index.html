@@ -1,0 +1,88 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Movies</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+</head>
+
+<body id="movies__body">
+    <section>
+        <nav>
+            <div class="nav__container">
+                <img class="logo nav__logo"
+                    src="https://static.vecteezy.com/system/resources/previews/027/702/935/non_2x/cinema-logo-roll-film-on-white-background-vector.jpg"
+                    alt="" />
+                <ul class="nav__links">
+                    <li><a href="#" class="nav__link">Home</a></li>
+                    <li><a href="#" class="nav__link no-cursor">Contact</a></li>
+                    <li><a href="#" class="nav__link nav__link--primary">Movies</a></li>
+                </ul>
+                <div class="overlay">
+                    <figure>
+                        <img class="overlay__img"
+                            src="https://offloadmedia.feverup.com/secretmiami.com/wp-content/uploads/2025/02/03001701/shutterstock_1284521104-2-1024x683.jpg" />
+                    </figure>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <div class="input-wrap">
+        <input id="searchInput" type="text" onkeyup="searchKeyword(event)"
+            placeholder="Search by Title or Keyword"/>
+        <div class="search-wrapper">
+            <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" role="img"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" class="fa-search">
+                <path fill="currentColor"
+                    d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"
+                    class=""></path>
+            </svg>
+        </div>
+    </div>
+    <main>
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="movies__header">
+                        <h2 class="section__title movies__header--title">
+                            All <span class="purple">Movies</span>
+                        </h2>
+                        <select id="filter" onchange="filterMovies(event)">
+                            <option value="" disabled selected>Sort</option>
+                            <option value="NEW_TO_OLD">Newest to Oldest</option>
+                            <option value="OLD_TO_NEW">Oldest to Newest</option>
+                        </select>
+                    </div>
+                    <div class="movies movies__loading">
+                        <i class="fa-solid fa-spinner fa-spin movies__loading--spinner"></i>
+                    </div>
+                    <div id="results"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+<footer>
+    <div class="container">
+        <div class="row__column">
+            <a href="#">
+                <figure class="footer__logo">
+                    <img class="footer__logo--img"
+                        src="https://static.vecteezy.com/system/resources/previews/027/702/935/non_2x/cinema-logo-roll-film-on-white-background-vector.jpg"
+                        alt="" />
+                </figure>
+            </a>
+            <div class="footer__list">
+                <a href="#" class="footer__link">Home</a>
+                <a class="footer__link no-cursor">About</a>
+                <a href="#" class="footer__link">Movies</a>
+                <a class="footer__link no-cursor">Contact</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</html>
