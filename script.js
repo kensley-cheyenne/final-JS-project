@@ -1,4 +1,4 @@
-let movies;
+let movies = [];
 const moviesWrapper = document.querySelector(".movies");
 const searchInput = document.querySelector("#searchInput"); 
 
@@ -17,7 +17,15 @@ function filterMovies(event) {
 }
 
 function searchKeyword(event) {
-  getMovies(event.target.value);
+  const keyword = event.target.value.toLowerCase();
+  if (!keyword) {
+    renderMovies(movies);
+    return;
+  }
+  const filtered = movies.filter(movie =>
+    movie.Title.toLowerCase().includes(keyword)
+  );
+  renderMovies(filtered);
 }
 
 async function getMovies(searchValue) {
@@ -30,6 +38,10 @@ async function getMovies(searchValue) {
 }
 
 function renderMovies(movies) {
+  if (!movies || movies.length === 0) {
+    moviesWrapper.innerHTML = '<div class="no-matches">No matches</div>';
+    return;
+  }
   const moviesHTMLString = movies.map((movie) => moviesHTML(movie)).join("");
   moviesWrapper.innerHTML = moviesHTMLString;
 }
@@ -48,3 +60,4 @@ function moviesHTML(movie) {
           </div>`;
 }
 getMovies();
+searchInput.addEventListener("input", searchKeyword);
