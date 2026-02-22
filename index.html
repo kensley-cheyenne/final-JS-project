@@ -31,7 +31,7 @@
         </nav>
     </section>
     <div class="input-wrap">
-        <input id="searchInput" type="text" onkeyup="searchKeyword(event)"
+        <input id="searchInput" type="text" onchange="searchKeyword(event)"
             placeholder="Search by Title or Keyword"/>
         <div class="search-wrapper">
             <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" role="img"
@@ -43,7 +43,7 @@
         </div>
     </div>
     <main>
-        <section>
+        <section id="movies__main">
             <div class="container">
                 <div class="row">
                     <div class="movies__header">
