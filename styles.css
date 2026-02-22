@@ -100,23 +100,25 @@ h2 {
     pointer-events: none;
 }
 
-input {
-    color: rgba(0, 0, 0, .87);
+ .input-wrap {
     width: 100%;
-    max-width: 300px;
-    height: 40px;
-    font-size: 16px;
-    padding-left: 20px;
-    border: none;
+    max-width: 25vw;
+    position: relative;
+    left: 20px;
+    padding-top: 8px;
 }
 
-.input-wrap {
+#searchInput {
+    color: rgba(0, 0, 0, .87);
     width: 100%;
-    max-width: 300px;
-    position: absolute;
+    height: 5vh;
     border-radius: 50px;
-    overflow: hidden;
-    transform: translateX(180%) translateY(130%);
+    padding: 0 8px;
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
 }
 
 .fa-search {
@@ -127,9 +129,9 @@ input {
 .search-wrapper {
     position: absolute;
     cursor: pointer;
-    top: 0;
-    bottom: 0;
-    right: 0;
+    top: 110%;
+    left: 105%;
+    transform: translate(-110%, -50%);
     z-index: 1000;
     padding: 0 20px 0 8px;
     color: #6030b1;
@@ -280,3 +282,19 @@ select {
     margin-top: 20px;
   }
 
+/* SMALL & LARGE PHONES */
+
+@media (max-width: 768px) {
+    .movie {
+        width: calc(100% / 3);
+    }
+}
+
+@media (max-width: 550px) {
+    .movie {
+        width: calc(100% / 2);
+    }
+    .nav__links {
+        display: none;
+    }
+}
