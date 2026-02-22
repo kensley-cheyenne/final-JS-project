@@ -1,7 +1,6 @@
 let movies = [];
-const moviesWrapper = document.querySelector(".movies");
 const searchInput = document.querySelector("#searchInput"); 
-
+// sort //
 function filterMovies(event) {
   const filter = event.target.value;
     if (filter === "NEW_TO_OLD") {
@@ -15,28 +14,35 @@ function filterMovies(event) {
   }
   renderMovies(movies);
 }
-
+// search bar //
 function searchKeyword(event) {
+  searchInput.addEventListener("keydown", function(e) {
+    if (e.key === "Enter") {
+      searchKeyword({ target: searchInput });
+    }
+  });
+
+  searchInput.addEventListener("input", function(e) {
+    if (!e.target.value) {
+      renderMovies(movies);
+    }
+  });
+
   const keyword = event.target.value.toLowerCase();
-  if (!keyword) {
-    renderMovies(movies);
-    return;
-  }
   const filtered = movies.filter(movie =>
     movie.Title.toLowerCase().includes(keyword)
   );
   renderMovies(filtered);
 }
 
-async function getMovies(searchValue) {
-  const response = await fetch(
-    `https://www.omdbapi.com/?i=tt3896198&apikey=d5c82cd3&s=${searchValue || "Nothing"}`
-  );
-  const { Search : data } = await response.json();
-  movies = data
-  renderMovies(movies);
+const searchBtn = document.querySelector(".fa-search");
+if (searchBtn) {
+  searchBtn.addEventListener("click", function() {
+    searchKeyword({ target: searchInput });
+  });
 }
 
+const moviesWrapper = document.querySelector(".movies");
 function renderMovies(movies) {
   if (!movies || movies.length === 0) {
     moviesWrapper.innerHTML = '<div class="no-matches">No matches</div>';
@@ -45,7 +51,7 @@ function renderMovies(movies) {
   const moviesHTMLString = movies.map((movie) => moviesHTML(movie)).join("");
   moviesWrapper.innerHTML = moviesHTMLString;
 }
-
+// movies from API //
 function moviesHTML(movie) {
   return `<div class="movie">
             <figure class="movie__img__wrapper">
@@ -59,5 +65,13 @@ function moviesHTML(movie) {
             </div>
           </div>`;
 }
+
+async function getMovies(searchInput) {
+  const response = await fetch(
+    `https://www.omdbapi.com/?i=tt3896198&apikey=d5c82cd3&s=${searchInput || "all"}`
+  );
+  const { Search : data } = await response.json();
+  movies = data
+  renderMovies(movies);
+}
 getMovies();
-searchInput.addEventListener("input", searchKeyword);
