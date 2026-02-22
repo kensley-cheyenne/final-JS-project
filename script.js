@@ -26,13 +26,12 @@ async function getMovies(searchValue) {
   );
   const { Search : data } = await response.json();
   movies = data
-  getMovies(movies);
+  renderMovies(movies);
 }
 
 function renderMovies(movies) {
-  const moviesHtml = movies.map((movie) => moviesHtml(movie)).join("");
-
-  moviesWrapper.innerHTML = moviesHtml;
+  const moviesHTMLString = movies.map((movie) => moviesHTML(movie)).join("");
+  moviesWrapper.innerHTML = moviesHTMLString;
 }
 
 function moviesHTML(movie) {
